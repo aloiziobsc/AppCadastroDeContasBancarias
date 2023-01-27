@@ -1,0 +1,13 @@
+<h1>Tela Inicial</h1>
+<button><a routerLink="/lista">Listar Bancos</a></button>
+<button><a routerLink="/cadastrar">Cadastrar</a></button>
+
+
+<h1>Contas cadastradas:</h1>
+
+<div>
+  {{registeredList
+     ? registeredListParsed
+    : 'Não existe conta cadastrada'
+  }}
+</div>
