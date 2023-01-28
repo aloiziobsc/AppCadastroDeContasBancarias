@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { registeredItem } from './interfaces/RegisteredItem'
 
 @Component({
   selector: 'app-home',
@@ -6,9 +7,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
+  
 
   registeredList = window.localStorage.getItem('registeredList')
-  registeredListParsed = this.registeredList && JSON.parse(this.registeredList)
+  registeredListParsed: registeredItem[] = this.registeredList && JSON.parse(this.registeredList)
 
   constructor() {}
 

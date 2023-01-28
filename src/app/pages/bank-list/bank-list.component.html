@@ -1,1 +1,11 @@
 <p>bank-list works!</p>
+
+
+<ul *ngIf="fetchData">
+  <div *ngFor="let bank of fetchData">
+    Código: {{bank?.code}}
+    Banco: {{bank?.fullName}}
+    <!-- ISPB: {{bank?.ispb}}
+    Abreviação: {{bank?.name}} -->
+  </div>
+</ul>

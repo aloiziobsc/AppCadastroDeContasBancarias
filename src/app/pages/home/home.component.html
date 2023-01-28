@@ -5,9 +5,14 @@
 
 <h1>Contas cadastradas:</h1>
 
-<div>
-  {{registeredList
-     ? registeredListParsed
-    : 'Não existe conta cadastrada'
-  }}
+<div *ngIf="!registeredListParsed">
+  Não existe conta(s) cadastrada(s)
 </div>
+
+<ul *ngIf="registeredListParsed">
+  <li *ngFor="let item of registeredListParsed">
+    Código: {{item?.code}}
+    Agencia: {{item?.fullName}}
+    Conta: {{item?.account}}
+  </li>
+</ul>
