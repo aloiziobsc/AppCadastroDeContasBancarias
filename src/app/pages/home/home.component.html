@@ -1,13 +1,15 @@
 <body>
   <h1>Inicie um novo cadastro:</h1>
-  <button><a routerLink="/lista" class="link">Iniciar cadastro</a></button>
+  <button class="button" (click)="goToBankList()">
+    Iniciar cadastro
+  </button>
 
 
   <h1>Conta(s) cadastrada(s):</h1>
 
-  <div *ngIf="!registeredList" class="card">
-    Não existe conta(s) cadastrada(s)
-  </div>
+  <p *ngIf="!registeredList">
+    Nenhuma conta(s) cadastrada(s)
+  </p>
 
 
   <ul *ngIf="registeredListParsed">

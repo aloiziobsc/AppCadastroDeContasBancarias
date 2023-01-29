@@ -24,7 +24,7 @@ export class BankListComponent {
     } else {
       this.requestsService.getBankByCode(filterCode).subscribe((data) => {
         this.filteredData = [data]
-      })
+      }, () => alert("Banco não encontrado ou erro no servidor"))
     }
     
     // let intFilterCode = parseInt(filterCode)

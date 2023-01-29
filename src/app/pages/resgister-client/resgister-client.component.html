@@ -8,7 +8,7 @@
       <p>Nome: {{bankInfoParsed.name}}</p>
   </div>
 
-  <h1>Informe a agência e a conta :</h1>
+  <h1>Para completar o seu cadastro informe a agência e conta :</h1>
   <form class="card">
     <p>
       <label for="agencyCode">Código da agência:</label>
@@ -35,6 +35,7 @@
     <button
       (click)="register(inputAgencyField.value, inputAccountField.value)"
       type="submit"
+      class="button"
     >
       Cadastrar
     </button>
