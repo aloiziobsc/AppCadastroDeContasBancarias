@@ -1,18 +1,24 @@
-<h1>Tela Inicial</h1>
-<button><a routerLink="/lista">Listar Bancos</a></button>
-<button><a routerLink="/cadastrar">Cadastrar</a></button>
+<body>
+  <h1>Inicie um novo cadastro:</h1>
+  <button><a routerLink="/lista" class="link">Iniciar cadastro</a></button>
 
 
-<h1>Contas cadastradas:</h1>
+  <h1>Conta(s) cadastrada(s):</h1>
 
-<div *ngIf="!registeredListParsed">
-  Não existe conta(s) cadastrada(s)
-</div>
+  <div *ngIf="!registeredList" class="card">
+    Não existe conta(s) cadastrada(s)
+  </div>
 
-<ul *ngIf="registeredListParsed">
-  <li *ngFor="let item of registeredListParsed">
-    Código: {{item?.code}}
-    Agencia: {{item?.fullName}}
-    Conta: {{item?.account}}
-  </li>
-</ul>
+
+  <ul *ngIf="registeredListParsed">
+    <div *ngFor="let item of registeredListParsed">
+      <div
+        class="card"
+      >
+        <p>Código: {{item?.code}}</p>
+        <p>Agência: {{item?.bankAgency}}</p>
+        <p>Banco: Conta: {{item?.account}}</p>
+      </div>
+    </div>
+  </ul>
+</body>

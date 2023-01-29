@@ -1,11 +1,35 @@
-<p>bank-list works!</p>
+<body>
+  <h1>Escolha seu Banco</h1>
+  <label for="bankCode">Filtre pelo código do banco: </label>
+  <input
+    placeholder="ex: 123"
+    id="bankCode"
+    type="number"
+    min="0"
+    #inputCodeField
+    required
+  />
+  <button
+    (click)="search(inputCodeField.value)"
+    type="submit"
+  >
+    Filtrar
+  </button>
 
 
-<ul *ngIf="fetchData">
-  <div *ngFor="let bank of fetchData">
-    Código: {{bank?.code}}
-    Banco: {{bank?.fullName}}
-    <!-- ISPB: {{bank?.ispb}}
-    Abreviação: {{bank?.name}} -->
-  </div>
-</ul>
+  <h3>Clique no card do seu banco:</h3>
+
+  <ul *ngIf="rawFetchedData">
+    <div *ngFor="let bank of filteredData">
+      <div
+        *ngIf="bank?.code"
+        class="card"
+      >
+      <a routerLink="/cadastrar" class="link" (click)="setBankLocalStorage(bank)">
+        <p>Código: {{bank?.code}}</p>
+        <p>Banco: {{bank?.fullName}}</p>
+      </a>
+      </div>
+    </div>
+  </ul>
+</body>

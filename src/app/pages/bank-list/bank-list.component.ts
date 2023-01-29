@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { RequestsService } from 'src/app/services/requests.service';
+import { bankData } from './interfaces/BankData'
 
 @Component({
   selector: 'app-bank-list',
@@ -7,16 +8,34 @@ import { RequestsService } from 'src/app/services/requests.service';
   styleUrls: ['./bank-list.component.css']
 })
 export class BankListComponent {
-  fetchData: any
+  rawFetchedData: any
+  filteredData: any
 
   constructor(private requestsService: RequestsService) {
     this.requestsService.getBankListData().subscribe((data) => {
-      this.fetchData = data
-      console.log(data)
+      this.rawFetchedData = data
+      this.filteredData = data
     })
   }
 
-  ngOnInit(): void {
+  search(filterCode:string) : void {
+    if(!filterCode) {
+      alert("Digite o código do seu banco antes de filtrar")
+    } else {
+      this.requestsService.getBankByCode(filterCode).subscribe((data) => {
+        this.filteredData = [data]
+      })
+    }
     
+    // let intFilterCode = parseInt(filterCode)
+    // this.filteredData = this.rawFetchedData.filter((item:bankData) =>
+    //   item.code === intFilterCode)
+  }
+
+  setBankLocalStorage(bankInfo:bankData) {
+    if(localStorage.getItem('bankInfo')) {
+      localStorage.removeItem('bankInfo');
+    }
+    localStorage.setItem('bankInfo', JSON.stringify(bankInfo));
   }
 }

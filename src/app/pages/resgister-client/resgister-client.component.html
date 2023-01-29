@@ -1,1 +1,42 @@
-<p>resgister-client works!</p>
+<body>
+  <h1>Finalizar cadastro</h1>
+  <h3>Banco Selecionado:</h3>
+  <div *ngIf="bankInfoParsed" class="card">
+      <p>Código: {{bankInfoParsed.code}}</p>
+      <p>Nome completo: {{bankInfoParsed.fullName}}</p>
+      <p>ISPB: {{bankInfoParsed.ispb}}</p>
+      <p>Nome: {{bankInfoParsed.name}}</p>
+  </div>
+
+  <h1>Informe a agência e a conta :</h1>
+  <form class="card">
+    <p>
+      <label for="agencyCode">Código da agência:</label>
+      <input
+        placeholder="ex: 123456"
+        id="agencyCode"
+        type="number"
+        min="0"
+        #inputAgencyField
+        required
+      />
+    </p>
+    <p>
+      <label for="accountCode">Código da conta de cadastro:</label>
+      <input
+        placeholder="ex: 123456"
+        id="accountCode"
+        type="number"
+        min="0"
+        #inputAccountField
+        required
+      />
+    </p>
+    <button
+      (click)="register(inputAgencyField.value, inputAccountField.value)"
+      type="submit"
+    >
+      Cadastrar
+    </button>
+  </form>
+</body>

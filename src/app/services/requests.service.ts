@@ -11,4 +11,8 @@ export class RequestsService {
   getBankListData() {
     return this.http.get('https://brasilapi.com.br/api/banks/v1')
   }
+
+  getBankByCode(code:string) {
+    return this.http.get(`https://brasilapi.com.br/api/banks/v1/${code}`)
+  }
 }

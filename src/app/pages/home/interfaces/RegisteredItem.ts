@@ -1,5 +1,5 @@
 export interface registeredItem {
   code: number,
-  fullName: string,
+  bankAgency: string,
   account: string
 }

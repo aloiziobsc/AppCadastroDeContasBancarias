@@ -9,14 +9,11 @@ import { registeredItem } from './interfaces/RegisteredItem'
 export class HomeComponent {
   
 
-  registeredList = window.localStorage.getItem('registeredList')
-  registeredListParsed: registeredItem[] = this.registeredList && JSON.parse(this.registeredList)
+  registeredList: any
+  registeredListParsed: registeredItem[]
 
-  constructor() {}
-
-  ngOnInit(): void {
-    if(!this.registeredList) {
-      console.log('registeredListEmpty')
-    }
+  constructor() {
+    this.registeredList = window.localStorage.getItem('registeredList')
+    this.registeredListParsed = this.registeredList && JSON.parse(this.registeredList)
   }
 }
